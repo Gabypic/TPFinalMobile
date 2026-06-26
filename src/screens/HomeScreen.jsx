@@ -9,7 +9,6 @@ const { width } = Dimensions.get('window');
 
 const SERVER_URL = 'http://185.132.47.110:5000';
 
-// Configuration du comportement des notifications quand l'application est ouverte
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
@@ -69,7 +68,7 @@ export default function HomeScreen() {
         body: body,
         sound: true,
       },
-      trigger: null, // Déclenche immédiatement
+      trigger: null,
     });
   };
 
@@ -78,7 +77,7 @@ export default function HomeScreen() {
     if (now - lastNotificationTime.current > 120000) {
       let alertTriggered = false;
 
-      if (latest.temperature > 24) {
+      if (latest.temperature > 30) {
         sendNotification("⚠ Température élevée", `Température élevée détectée: ${latest.temperature}°C`);
         alertTriggered = true;
       } else if (latest.temperature < 17) {
