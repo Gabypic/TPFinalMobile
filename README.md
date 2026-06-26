@@ -54,5 +54,3 @@ Assurez-vous que votre fichier `src/services/supabase.js` contient bien vos iden
 
 L'URL du serveur API est actuellement configurée dans les composants (ex: `http://185.132.47.110:5000`).
 
-## 👨‍💻 Auteur
-Développé dans le cadre d'un TP Final Mobile.
