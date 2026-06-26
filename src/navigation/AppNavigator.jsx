@@ -70,10 +70,8 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {session && session.user ? (
-          // Si connecté, on affiche le navigateur à onglets
           <Stack.Screen name="MainTabs" component={MainTabs} />
         ) : (
-          // Si non connecté, on affiche l'écran de login
           <Stack.Screen name="Login" component={LoginScreen} />
         )}
       </Stack.Navigator>

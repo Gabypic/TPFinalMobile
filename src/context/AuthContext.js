@@ -9,14 +9,12 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Vérifier la session actuelle
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user || null);
       setLoading(false);
     });
 
-    // Écouter les changements d'état de l'authentification
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         setSession(session);
