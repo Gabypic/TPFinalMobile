@@ -46,8 +46,8 @@ export default function SettingsScreen() {
   };
 
   return (
-    <KeyboardAvoidingView 
-      style={{ flex: 1 }} 
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView contentContainerStyle={styles.container}>
@@ -56,7 +56,7 @@ export default function SettingsScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Configuration du Capteur</Text>
           <Text style={styles.sectionSubtitle}>Saisissez l'ID et le mot de passe du capteur pour recevoir ses données.</Text>
-          
+
           <TextInput
             style={styles.input}
             placeholder="ID du capteur (ex: SENSOR_01)"
@@ -71,20 +71,20 @@ export default function SettingsScreen() {
             onChangeText={setSensorPwd}
             secureTextEntry
           />
-          
-          <TouchableOpacity 
-            style={[styles.button, styles.saveButton]} 
+
+          <TouchableOpacity
+            style={[styles.button, styles.saveButton]}
             onPress={handleSaveSensor}
             disabled={isSaving}
           >
             <Text style={styles.buttonText}>{isSaving ? 'Enregistrement...' : 'Enregistrer le Capteur'}</Text>
           </TouchableOpacity>
         </View>
-        
+
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Compte</Text>
-          <TouchableOpacity 
-            style={[styles.button, styles.logoutButton]} 
+          <TouchableOpacity
+            style={[styles.button, styles.logoutButton]}
             onPress={handleLogout}
           >
             <Text style={styles.buttonText}>Se déconnecter</Text>

@@ -31,7 +31,7 @@ export default function LoginScreen() {
     setLoading(true);
     try {
       await register(email, password);
-      Alert.alert('Succès', 'Vérifiez vos emails pour confirmer votre compte (ou connectez-vous directement si la confirmation email est désactivée).');
+      Alert.alert('Succès', 'Votre compte a bien été créé.');
     } catch (error) {
       Alert.alert('Erreur d\'inscription', error.message);
     } finally {
@@ -42,7 +42,7 @@ export default function LoginScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Bienvenue</Text>
-      
+
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -51,7 +51,7 @@ export default function LoginScreen() {
         autoCapitalize="none"
         keyboardType="email-address"
       />
-      
+
       <TextInput
         style={styles.input}
         placeholder="Mot de passe"
@@ -67,7 +67,7 @@ export default function LoginScreen() {
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Se connecter</Text>
           </TouchableOpacity>
-          
+
           <TouchableOpacity style={[styles.button, styles.outlineButton]} onPress={handleRegister}>
             <Text style={styles.outlineButtonText}>Créer un compte</Text>
           </TouchableOpacity>

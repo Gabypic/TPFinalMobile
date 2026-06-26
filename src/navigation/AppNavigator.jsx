@@ -14,7 +14,6 @@ import SettingsScreen from '../screens/SettingsScreen';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Composant regroupant les onglets (accessible à tout moment en bas de l'écran)
 function MainTabs() {
   return (
     <Tab.Navigator
@@ -34,23 +33,23 @@ function MainTabs() {
         },
         tabBarActiveTintColor: '#007AFF',
         tabBarInactiveTintColor: 'gray',
-        headerShown: true, // Affiche le titre par défaut pour les autres écrans
+        headerShown: true,
       })}
     >
-      <Tab.Screen 
-        name="Home" 
-        component={HomeScreen} 
-        options={{ title: 'Accueil', headerShown: false }} 
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ title: 'Accueil', headerShown: false }}
       />
-      <Tab.Screen 
-        name="Profile" 
-        component={ProfileScreen} 
-        options={{ title: 'Profil' }} 
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ title: 'Profil' }}
       />
-      <Tab.Screen 
-        name="Settings" 
-        component={SettingsScreen} 
-        options={{ title: 'Paramètres' }} 
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{ title: 'Paramètres' }}
       />
     </Tab.Navigator>
   );

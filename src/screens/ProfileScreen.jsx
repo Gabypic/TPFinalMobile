@@ -37,12 +37,12 @@ export default function ProfileScreen() {
   };
 
   return (
-    <KeyboardAvoidingView 
-      style={{ flex: 1 }} 
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView contentContainerStyle={styles.container}>
-        
+
         {/* En-tête Avatar */}
         <View style={styles.header}>
           <View style={styles.avatarPlaceholder}>
@@ -77,7 +77,7 @@ export default function ProfileScreen() {
               onChangeText={setNewPassword}
               secureTextEntry
             />
-            
+
             <Text style={styles.label}>Confirmer le mot de passe</Text>
             <TextInput
               style={styles.input}
@@ -86,9 +86,9 @@ export default function ProfileScreen() {
               onChangeText={setConfirmPassword}
               secureTextEntry
             />
-            
-            <TouchableOpacity 
-              style={[styles.button, loading && styles.buttonDisabled]} 
+
+            <TouchableOpacity
+              style={[styles.button, loading && styles.buttonDisabled]}
               onPress={handleChangePassword}
               disabled={loading}
             >
