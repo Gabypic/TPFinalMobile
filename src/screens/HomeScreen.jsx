@@ -28,17 +28,15 @@ async function registerForPushNotificationsAsync() {
     });
   }
 
-  if (Device.isDevice) {
-    const { status: existingStatus } = await Notifications.getPermissionsAsync();
-    let finalStatus = existingStatus;
-    if (existingStatus !== 'granted') {
-      const { status } = await Notifications.requestPermissionsAsync();
-      finalStatus = status;
-    }
-    if (finalStatus !== 'granted') {
-      console.log('Failed to get push token for push notification!');
-      return;
-    }
+  const { status: existingStatus } = await Notifications.getPermissionsAsync();
+  let finalStatus = existingStatus;
+  if (existingStatus !== 'granted') {
+    const { status } = await Notifications.requestPermissionsAsync();
+    finalStatus = status;
+  }
+  if (finalStatus !== 'granted') {
+    console.log('Permission not granted for notifications!');
+    return;
   }
 }
 
@@ -59,11 +57,12 @@ export default function HomeScreen() {
   const lastNotificationTime = useRef(0);
 
   useEffect(() => {
-    // Demander la permission au lancement
     registerForPushNotificationsAsync();
   }, []);
 
   const sendNotification = async (title, body) => {
+    Alert.alert(title, body);
+
     await Notifications.scheduleNotificationAsync({
       content: {
         title: title,
@@ -79,8 +78,8 @@ export default function HomeScreen() {
     if (now - lastNotificationTime.current > 120000) {
       let alertTriggered = false;
 
-      if (latest.temperature > 30) {
-        sendNotification("⚠ Température élevée", `Température critique détectée: ${latest.temperature}°C`);
+      if (latest.temperature > 24) {
+        sendNotification("⚠ Température élevée", `Température élevée détectée: ${latest.temperature}°C`);
         alertTriggered = true;
       } else if (latest.temperature < 17) {
         sendNotification("⚠ Température basse", `La température est descendue à ${latest.temperature}°C`);
